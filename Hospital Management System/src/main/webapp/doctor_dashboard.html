@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://burst.shopifycdn.com/photos/doctor-reaches-towards-shelf.jpg?width=1000&format=pjpg&exif=0&iptc=0') no-repeat center center/cover;
+            background-size: cover;
+            color: #333; /* Soft black for better readability */
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8); /* Soft white navbar */
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            background: #AED581; /* Light green */
+            color: black;
+            padding: 12px 22px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .navbar ul li a:hover {
+            background: #9CCC65; /* Slightly darker green on hover */
+            transform: scale(1.1);
+        }
+
+        .dashboard-container {
+            text-align: center;
+            margin-top: 120px;
+            background: rgba(255, 255, 255, 0.7); /* Light background */
+            padding: 25px;
+            border-radius: 10px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #388E3C; /* Darker green for contrast */
+        }
+
+        .description {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="view_appointments.html">View Appointments</a></li>
+            <li><a href="update_patient_records.html">Update Patient Records</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-container">
+        <h2>Welcome, Doctor</h2>
+        <p class="description">
+            As a doctor, your role is to provide the highest level of care to your patients. 
+            Here, you can efficiently manage appointments, update patient records, and ensure 
+            a smooth medical workflow. Your dedication and expertise play a crucial role 
+            in delivering quality healthcare to those in need.
+        </p>
+    </div>
+
+</body>
+</html>

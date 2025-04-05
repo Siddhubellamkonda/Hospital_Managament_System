@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Patient Updates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://c1.wallpaperflare.com/preview/352/558/383/various-doctor-hospital-medical.jpg') no-repeat center center/cover;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        h2, h3 {
+            color: #FFD700; /* Gold color for headings */
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        input, select {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            text-align: center;
+        }
+
+        .btn {
+            background: #FFD700; /* Gold Button */
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #FFC107; /* Slightly darker gold */
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Manage Patient Updates</h2>
+
+    <div class="container">
+        <h3>Update Patient Condition</h3>
+        <form action="ManagePatientUpdatesServlet" method="post">
+            <input type="hidden" name="action" value="addUpdate">
+            <label>Patient ID:</label>
+            <input type="number" name="patient_id" required><br>
+            
+            <label>Updated Disease/Condition:</label>
+            <input type="text" name="disease" required><br>
+            
+            <label>Status:</label>
+            <select name="status">
+                <option value="Under Treatment">Under Treatment</option>
+                <option value="Recovered">Recovered</option>
+                <option value="Critical">Critical</option>
+            </select><br>
+            
+            <input type="submit" value="Update Patient" class="btn">
+        </form>
+
+        <h3>View Patient Updates</h3>
+        <form action="ManagePatientUpdatesServlet" method="post">
+            <input type="hidden" name="action" value="viewUpdates">
+            
+            <label>Patient ID:</label>
+            <input type="number" name="patient_id" required><br>
+            
+            <input type="submit" value="View Updates" class="btn">
+        </form>
+
+        <a href="doctor_dashboard.html" class="btn">Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

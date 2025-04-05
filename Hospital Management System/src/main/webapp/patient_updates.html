@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Updates</title>
+    <style>
+    :root {
+        --primary-blue: #2A5C82;
+        --accent-teal: #4CA1A3;
+        --alert-red: #FF6B6B;
+        --text-light: #F8F9FA;
+        --glass-bg: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 2rem;
+        background: linear-gradient(rgba(42, 92, 130, 0.9), rgba(42, 92, 130, 0.9)),
+                    url('https://thumbs.dreamstime.com/b/hospital-male-plastic-surgeon-specializes-abdominoplasty-performing-abdominal-surgery-operating-room-to-illustrate-tummy-351897816.jpg') center/cover fixed;
+        color: var(--text-light);
+        min-height: 100vh;
+    }
+
+    .container {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    }
+
+    h2 {
+        color: var(--accent-teal);
+        font-size: 2.25rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        background: var(--glass-bg);
+        backdrop-filter: blur(8px);
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+        background: rgba(76, 161, 163, 0.3);
+        font-weight: 600;
+        color: var(--text-light);
+    }
+
+    td {
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.875rem 1.75rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+        color: var(--text-light);
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-top: 1.5rem;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(76, 161, 163, 0.3);
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1.5rem;
+            width: 95%;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+        }
+        
+        th, td {
+            padding: 0.75rem;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+        animation: fadeIn 0.6s ease-out;
+    }
+</style>
+    <script>
+        function loadPatientUpdates() {
+            fetch('ViewPatientUpdatesServlet')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('updatesTable').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching updates:', error));
+        }
+
+        window.onload = loadPatientUpdates;
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Patient Updates</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Doctor ID</th>
+                    <th>Date</th>
+                    <th>Disease</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="updatesTable">
+                <tr>
+                    <td colspan="5">Loading patient updates...</td>
+                </tr>
+            </tbody>
+        </table>
+       
+    
+     <a href="admin_dashboard.html" class="btn">Back to Dashboard</a>
+</div>
+</body>
+</html>

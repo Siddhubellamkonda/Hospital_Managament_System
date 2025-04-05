@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Manage Doctors</title>
+    <style>
+    :root {
+        --primary-blue: #2A5C82;
+        --accent-teal: #4CA1A3;
+        --alert-red: #FF6B6B;
+        --text-light: #F8F9FA;
+        --glass-bg: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 2rem;
+        background: linear-gradient(rgba(42, 92, 130, 0.9), rgba(42, 92, 130, 0.9)),
+                    url('https://thumbs.dreamstime.com/b/iv-drip-background-blurred-hospital-ward-concept-serenity-58687572.jpg') center/cover fixed;
+        color: var(--text-light);
+        min-height: 100vh;
+    }
+
+    .container {
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        border-radius: 1.5rem;
+        padding: 2.5rem;
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    }
+
+    h2 {
+        color: var(--text-light);
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    form {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    label {
+        display: block;
+        margin: 1rem 0 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        padding: 0.875rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-light);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--accent-teal);
+        box-shadow: 0 0 0 3px rgba(76, 161, 163, 0.2);
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1.5rem;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+        color: var(--text-light);
+        border: none;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(76, 161, 163, 0.3);
+    }
+
+    .action-links {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.8rem 1.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-light);
+        border-radius: 0.75rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+    }
+
+    table {
+        width: 100%;
+        margin: 2rem auto;
+        border-collapse: collapse;
+        background: var(--glass-bg);
+        backdrop-filter: blur(8px);
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    th {
+        background: rgba(76, 161, 163, 0.3);
+        font-weight: 600;
+    }
+
+    tr:hover {
+        background: rgba(255, 255, 255, 0.03);
+    }
+        .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(76, 161, 163, 0.3);
+    }
+    
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 1.5rem;
+            width: 95%;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+        }
+        
+        .form-section {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+        animation: fadeIn 0.6s ease-out;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Doctor Management</h2>
+        <form action="ManageDoctorsServlet" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="specialization">Specialization:</label>
+            <input type="text" id="specialization" name="specialization" required>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+            <button type="submit" name="action" value="addDoctor">Add Doctor</button>
+        </form>
+<br>
+        <form action="ManageDoctorsServlet" method="post">
+            <label for="doctorId">Doctor ID:</label>
+            <input type="number" id="doctorId" name="doctorId" required>
+            <button type="submit" name="action" value="deleteDoctor">Remove Doctor</button>
+            
+            
+        </form>
+        <br><br>
+        <a class="back-link" href="admin_dashboard.html">Back to dashboard</a>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?cs=srgb&dl=pexels-pixabay-236380.jpg&fm=jpg') no-repeat center center/cover;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #FFD700; /* Gold color for the title */
+        }
+
+        #appointmentsTable {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            color: white;
+        }
+
+        table, th, td {
+            border: 1px solid white;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #4CAF50; /* Green Header */
+        }
+
+        td {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn {
+            background: #FFD700; /* Gold Button */
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #FFC107; /* Slightly darker gold */
+            transform: scale(1.1);
+        }
+    </style>
+
+    <script>
+        function loadAppointments() {
+            fetch('ViewAppointmentsServlet')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('appointmentsTable').innerHTML = data;
+            })
+            .catch(error => console.error('Error fetching appointments:', error));
+        }
+
+        window.onload = loadAppointments;
+    </script>
+</head>
+<body>
+    <h2>My Appointments</h2>
+    <div id="appointmentsTable">
+        <p>Loading appointments...</p>
+    </div>
+
+    <a href="doctor_dashboard.html" class="btn">Back to Dashboard</a>
+</body>
+</html>
+ 
